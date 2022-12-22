@@ -1,21 +1,19 @@
 import React,{useState,useEffect} from 'react'
 
 const Fetch = () => {
-  const url = "https://creator.zoho.eu/api/v2/skyler/sample/report/staff_details_Report";  
+  const url = 'sample/report/staff_details_Report';  
+  const token = 'Zoho-oauthtoken 1000.361d0ff3e0f556f84322a8a2b3707737.ffe1dd9822f20808d1bdfebd8bbf3a27'
   const[users, setUsers] = useState([])  
   useEffect(()=>{
     const load = async()=>{
     const response =  await fetch(url,{
-    mode: 'cors',    
     method: 'GET',
     headers: {
-      Authorization: 'Zoho-oauthtoken 1000.546b9b9d6195f487baa15c97c40d0188.c3848a6542f8604ca980ac31595470d5',
-     'Access-Control-Allow-Origin': '*',
+      'Authorization': token,
     }})
     const data = await response.json()
     setUsers(data)   
     console.log(data)
-
     }
    load()   
   },[])
