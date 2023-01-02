@@ -36,7 +36,7 @@ const FetchTest = () => {
   //Peticion a la API
   useEffect(()=>{
     const url = 'Product-Catalog/report/Product_Details';
-    const token ="Zoho-oauthtoken 1000.2e9c0bfd2e66ead71a67cfc562040243.cdce1685675287fe32bb0373b4124314" 
+    const token ="Zoho-oauthtoken 1000.9606c2fe3a1eb4c9e870114f0004b81c.6577a0d2b03ea734586636c182aefc81" 
     const peticion = fetch(url, {
         method: 'GET',
         headers: {'Authorization': token}
@@ -71,7 +71,7 @@ return (
             <Badge badgeContent={4} color="error">
              <NotificationsIcon/>
             </Badge>
-            <Avatar sx={{width:30, height:30}} alt="Symon" src="https://alumnosunir-my.sharepoint.com/:i:/g/personal/simonjose_lopez136_comunidadunir_net/EVAFDh59zntBkOV1hwEV-80BJbEcGfdcEI3GvrfA2p1zPg?e=kUsPNX"
+            <Avatar sx={{width:30, height:30}} alt="Symon" src=""
             onClick={e=>setOpen(true)}/>      
         </Icons> 
 
@@ -95,20 +95,17 @@ return (
     </AppBar>
    
     <div align="center">
-    <Card sx={{ maxWidth: 345 }}>
-
+    <Card sx={{ maxWidth: 345 }}> 
      {data.filter((item)=>item.Category.display_value.toLowerCase().includes(query.toLowerCase()))
      .map((product)=>(
+      /*Key obligatorio*/ 
      <p key={product.Product_ID}> 
-      {product.Product_Name} 
+      <Typography fontSize={25} fontFamily='arial' color={"#52796f"}>{product.Product_Name}</Typography>
      <img src= {"https://creator.zoho.eu" + product.Product_Images[0].display_value}></img><br/>
      <CardContent>
-      <Typography variant="body2" color="text.secondary">
-        This impressive paella is a perfect party dish and a fun meal to cook
-        together with your guests. Add 1 cup of frozen peas along with the mussels,
-        if you like.
-      </Typography>
-      {product.Category.display_value}
+      <Typography >{product.Product_Description}</Typography>
+      <Typography> Precio: € {product.Product_Value}<br/></Typography>
+      <Typography> Categoría: {product.Category.display_value}</Typography>
       <CardActions disableSpacing>
       <IconButton aria-label="add to favorites">
         <FavoriteIcon />
