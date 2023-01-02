@@ -32,25 +32,27 @@ const Icons = styled(Box)(({theme})=>({
 const FetchTest = () => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
-  const[open,setOpen] = useState(false); 
-  //Peticion a la API
-  useEffect(()=>{
-    const url = 'Product-Catalog/report/Product_Details';
-    const token ="Zoho-oauthtoken 1000.9606c2fe3a1eb4c9e870114f0004b81c.6577a0d2b03ea734586636c182aefc81" 
-    const peticion = fetch(url, {
-        method: 'GET',
-        headers: {'Authorization': token}
-   });
-   peticion
-   .then((answer) => { return answer.json() })
-   .then((resp) => {
-         const result = resp.data
-         setData(result)
-                
-     }) 
-     .catch((e)=>{console.log(e)})
+  const[open,setOpen] = useState(false);
+  const urlPost = "https://accounts.zoho.eu/oauth/v2/token?refresh_token=1000.2e85c3c9c4d568e485f620b35403bc6f.d5652d764a999e4c1763325058efb2a2&client_id=1000.L10967VQ19WMBCP5CMHPC9DOJCAI9J&client_secret=eeba586124ab65019a8c46d74034ac5beda988943b&grant_type=refresh_token";
+  const urlGet = "Product-Catalog/report/Product_Details";
+  useEffect(()=>{ 
+    const peticion = fetch(urlPost,{
+      method: 'POST',
+    });
+    peticion
+    .then((ans)=>{return ans.json()})
+    .then((resp)=>{
+      const reslt = resp.access_token;
+      console.log(reslt)
+      return fetch(urlGet,{
+        method: "GET",
+        headers:{'Authorization':`Zoho-oauthtoken ${reslt}` }})})
+        .then((answer) => { return answer.json() })
+        .then((resp) => {
+          const result = resp.data
+          setData(result)})
    
- },[]) 
+  },[])   
 return (
     <Box bgcolor="white" flex={4} p={2} align="center" > 
         <AppBar position="sticky">
@@ -103,7 +105,7 @@ return (
       <Typography fontSize={25} fontFamily='arial' color={"#52796f"}>{product.Product_Name}</Typography>
      <img src= {"https://creator.zoho.eu" + product.Product_Images[0].display_value}></img><br/>
      <CardContent>
-      <Typography >{product.Product_Description}</Typography>
+      <Typography textAlign={"center"}>{product.Product_Description}</Typography>
       <Typography> Precio: € {product.Product_Value}<br/></Typography>
       <Typography> Categoría: {product.Category.display_value}</Typography>
       <CardActions disableSpacing>
