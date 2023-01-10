@@ -65,7 +65,7 @@ return (
             <InputBase fullWidth={true} placeholder='Buscar...' type="text"className='search'
             onChange={(e)=>setQuery(e.target.value)}/> 
         </Search>
-
+        
         <Icons>
             <Badge badgeContent={2} color="error">
             <MailIcon/>
