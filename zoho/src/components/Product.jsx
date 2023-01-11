@@ -15,6 +15,7 @@ const Product = ({product}) => {
         </div>
         <div className="img">
           <img src={"https://creator.zoho.eu" + product.Product_Images[0].display_value + product.backdrop_path} alt=""/>
+          <p>{ product.Category.display_value }</p>       
         </div>
         
     </motion.div>

@@ -29,7 +29,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://creator.zoho.eu/api/v2/hostienda1",
+  
+  "proxy": "https://hostienda.vercel.app/",
   "eslintConfig": {
     "extends": [
       "react-app",
