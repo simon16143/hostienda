@@ -32,7 +32,7 @@ function App() {
    //Peticiones para el token y el archivo json
   const [data, setData] = useState([]);
   useEffect(()=>{ 
-    const peticion = fetch("https://hostienda-l71o.vercel.app:4000")
+    const peticion = fetch("https://hostienda-l71o.vercel.app")
     peticion
     .then(res => res.json())
     .then(data =>{
