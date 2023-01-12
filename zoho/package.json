@@ -29,8 +29,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  
-  "proxy": "https://hostienda.vercel.app/",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -51,5 +49,10 @@
   },
   "devDependencies": {
     "sass": "^1.57.1"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
