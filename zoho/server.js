@@ -13,7 +13,7 @@ const peticion = fetch(urlPost,{
     .then((ans)=>{return ans.json()})
     .then((resp)=>{
       const reslt = resp.access_token;
-      return app.get("/", async (req,res)=>{
+      return app.get("*", async (req,res)=>{
         const response = await fetch(urlGet,{
         method: "GET",
         headers:{
